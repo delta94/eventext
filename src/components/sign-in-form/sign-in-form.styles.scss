@@ -1,0 +1,42 @@
+.sign-in {
+    opacity: 0;
+
+    &.active {
+        opacity: 1;
+        transition: all 550ms ease-in-out;
+    }
+
+    button {
+        color: #fff;
+        background-color: #0064d4;
+        margin: 20px 5px 0 5px;
+        padding: 10px 18px;
+        border-radius: 5px;
+        font-weight: 600;
+        font-size: 15px;
+
+        &.login-button {
+            background-color: #0095fa;
+            width: 100px;
+        }
+
+        &.demo-button {
+            width: 170px;
+        }
+    }
+
+    .option {
+        padding-top: 25px;
+        font-size: 14px;
+
+        .link {
+            font-weight: 600;
+            color: #0095f6;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

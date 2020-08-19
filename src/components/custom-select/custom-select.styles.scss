@@ -1,0 +1,28 @@
+.select {
+    position: relative;
+
+    .dropdown {
+        position: absolute;
+        z-index: 2;
+
+        .menus {
+            background-color: #fff;
+            border-radius: 3px;
+            border: 1px solid #dedede;
+
+            li {
+                padding: 10px 20px;
+                cursor: pointer;
+                font-size: 14px;
+
+                &:hover {
+                    background-color: #fafafa;
+                }
+            }
+        }
+    }
+
+    .insert-button {
+        margin-left: 5px;
+    }
+}

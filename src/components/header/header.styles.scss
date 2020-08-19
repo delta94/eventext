@@ -1,0 +1,41 @@
+.header-container {
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 30px;
+
+        .breadcrumb {
+            display: flex;
+
+            h1 {
+                font-size: 28px;
+                line-height: 1.5;
+
+                &:first-child {
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            i {
+                font-size: 20px;
+                margin: 0 15px;
+                padding-top: 14px;
+                color: #0095fa;
+            }
+        }
+
+        button {
+            font-size: 16px;
+        }
+    }
+
+    hr {
+        border: 0.5px solid #eee;
+        margin: 20px 0;
+    }
+}

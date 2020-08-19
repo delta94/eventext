@@ -1,0 +1,30 @@
+.texts-drafts {
+    margin-bottom: 30px;
+
+    h2 {
+        line-height: 1.8;
+    }
+
+    table {
+        width: 100%;
+
+        thead {
+            border-bottom: 2px solid #eee;
+        
+            th {
+                width: 20%;
+                padding: 20px;
+                line-height: 1.5;
+
+                &:first-child {
+                    width: 60%;
+                    text-align: left;
+                }
+
+                &:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

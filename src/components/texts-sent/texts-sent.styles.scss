@@ -1,0 +1,29 @@
+.texts-sent {
+    h2 {
+        line-height: 1.8;
+        margin-bottom: 3px;
+    }
+
+    table {
+        width: 100%;
+
+        thead {
+            border-bottom: 2px solid #eee;
+        
+            th {
+                width: 20%;
+                padding: 15px;
+                line-height: 1.5;
+
+                &:first-child {
+                    width: 40%;
+                    text-align: left;
+                }
+
+                &:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

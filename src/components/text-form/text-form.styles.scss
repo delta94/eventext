@@ -1,0 +1,120 @@
+.form-container {
+    display: flex;
+
+    .form {
+        width: 50%;
+
+        form {
+            width: 100%;
+
+            .event-name, 
+            .segment, 
+            .message {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .segment {
+                .dropdown {
+                    width: 220px;
+                }
+            }
+
+            button {
+                font-size: 14px;
+                padding: 7px 10px;
+            }
+
+            label {
+                font-weight: 600;
+                margin: 15px 0 10px 0;
+                line-height: 1.5;
+                font-size: 16px;
+            }
+
+            textarea {
+                margin: 15px 0;
+                height: 120px;
+            }
+
+            input,
+            textarea {
+                border: 1px solid #ddd;
+                padding: 8px 10px;
+                border-radius: 5px;
+                font-size: 15px;
+                transition: border 250ms linear;
+
+                &:focus {
+                    border: 1px solid #0095fa;
+                    transition: border 250ms linear;
+                }
+            }
+
+            .message {
+                .media-tag {
+                    display: flex;
+
+                    .media-button {
+                        position: relative;
+
+                        input {
+                            opacity: 0;
+                            width: 140px;
+                            position: absolute;
+                            box-sizing: border-box;
+                            height: 30px;
+                        }
+
+                        input, 
+                        input[type=file]::-webkit-file-upload-button {
+                            cursor: pointer;
+                        }
+
+                        button {
+                            left: 0;
+                            width: 140px;
+                            margin-right: 8px;
+                        }
+                    }
+                }
+
+                .media-preview {
+                    background-color: rgba(243,156,18,.1);
+                    margin-bottom: 15px;
+                    padding: 8px;
+                    border-radius: 5px;
+                    display: flex;
+
+                    .label-close-btn {
+                        display: flex;
+                        justify-content: space-between;
+                        width: 100%;
+                        margin: auto;
+                        padding: 8px;
+
+                        i {
+                            cursor: pointer;
+
+                            &:hover {
+                                color: #0095fa;
+                            }
+                        }
+                    }
+
+                    img {
+                        height: 35px;
+                    }
+                }
+            }
+
+            .cancel-save-btn {
+                float: right;
+
+                button {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}

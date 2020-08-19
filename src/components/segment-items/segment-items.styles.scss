@@ -1,0 +1,36 @@
+table {
+    tbody {
+
+        tr {
+            &:hover {
+                background-color: #fafafa;
+            }
+
+            &:not(:first-child) {
+                border-top: 1px solid #eee;
+            }
+
+            td {
+                padding: 10px 15px;
+
+                &.name {
+                    font-weight: 600;
+                    color: #0095f6;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+
+                &.center {
+                    text-align: center;
+                }
+
+                &.right {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.top-bar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 65px;
+    padding: 16px 20px;
+    box-sizing: border-box;
+    background-color: #001276;
+    z-index: 1;
+
+    .logo {
+        height: 36px;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,47 @@
+.side-bar {
+    width: 200px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    position: fixed;
+    padding: 30px 20px;
+
+    .logo-icon {
+        width: 35px;
+        margin: 5px 10px 20px 10px;
+    }
+
+    .welcome-message {
+        margin: 10px 15px 20px 15px;
+    }
+
+    hr {
+        margin: 10px 0;
+        border: 1px solid #eee;
+    }
+
+    .menu {
+        padding: 10px;
+        box-sizing: border-box;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        color: #333;
+        border-radius: 5px;
+
+        &:hover {
+            background-color: #0095f6;
+            color: #fff;
+        }
+
+        i {
+            font-size: 16px;
+            line-height: 1.5;
+            margin: 0 4px;
+            width: 20px;
+        }
+
+        .title {
+            margin: 4px;
+        }
+    }
+}

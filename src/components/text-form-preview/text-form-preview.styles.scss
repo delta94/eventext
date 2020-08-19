@@ -1,0 +1,45 @@
+.form-preview {
+    width: 50%;
+
+    .phone-mockup {
+        background-image: url(../../assets/mockup.png);
+        background-size: cover;
+        background-position-x: center;
+        width: 300px;
+        height: 450px;
+        margin: 20px auto;
+        padding: 40px 55px;
+        box-sizing: border-box;
+        word-wrap: break-word;
+
+        .preview {
+            height: 360px;
+            overflow: auto;
+            padding: 0 10px;
+
+            .title {
+                text-align: center;
+                color: #aaa;
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                margin: 3px 0 10px 0;
+            }
+
+            img {
+                max-width: 130px;
+                border-radius: 10px;
+                margin: 4px 0;
+            }
+
+            .text {
+                width: 130px;
+                background-color: #ededed;
+                border-radius: 10px;
+                padding: 10px;
+                line-height: 1.2;
+                font-size: 13px;    
+            }
+        }
+    }
+}

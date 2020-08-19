@@ -1,0 +1,28 @@
+.dashboard {
+  display: flex;
+
+    .main-container {
+    padding: 20px 0;
+    margin-left: 240px;
+    width: calc(100vw - 240px);
+
+        .container {
+            padding: 0 30px;
+        }
+    }
+
+    .signout-button {
+        position: fixed;
+        left: 40px;
+        bottom: 40px;
+
+        i {
+            font-size: 20px;  
+            cursor: pointer;
+
+            &:hover {
+            color: #0095f6;
+            }
+        }
+    }
+}
