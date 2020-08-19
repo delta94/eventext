@@ -1,4 +1,5 @@
 import { userActionTypes } from '../user/user.actions';
+import { segmentActionTypes } from './segment.actions';
 
 const segmentReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -16,6 +17,14 @@ const segmentReducer = (state = {}, action) => {
                 ...state,
                 ...segments
             };
+        case segmentActionTypes.REMOVE_SEGMENT:
+            const newState = {};
+
+            Object.values(state).forEach(segment => {
+                if (segment._id !== action.segmentId) newState[segment._id] = segment;
+            });
+
+            return newState;
         default:
             return state;
     }

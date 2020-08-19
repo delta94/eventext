@@ -34,7 +34,7 @@ router.route('/:id').post((req, res) => {
 
 router.route('/:id').delete((req, res) => {
     Segment.findByIdAndDelete(req.params.id)
-        .then(() => res.json())
+        .then(segment => res.json(segment))
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
