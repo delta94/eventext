@@ -24,7 +24,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
     useEffect(() => {
         if (text) {
             setName(text.name);
-            setSegmentName(segment.name);
+            setSegmentName(segment ? segment.name : null);
             setMedia(text.media);
             setMessage(text.message);
         }
