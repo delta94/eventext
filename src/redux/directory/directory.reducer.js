@@ -1,6 +1,9 @@
 import { userActionTypes } from '../user/user.actions';
+import { sessionActionTypes } from '../session/session.actions';
 
-const directoryReducer = (state = {}, action) => {
+const initialState = {};
+
+const directoryReducer = (state = initialState, action) => {
     Object.freeze(state);
 
     switch (action.type) {
@@ -11,6 +14,8 @@ const directoryReducer = (state = {}, action) => {
                 ...state,
                 ...directories
             };
+        case sessionActionTypes.LOGOUT_USER:
+            return initialState;    
         default:
             return state;
     }

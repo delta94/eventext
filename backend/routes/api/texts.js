@@ -2,15 +2,19 @@ const router = require('express').Router();
 
 const Text = require('../../models/text.model');
 
-router.route('/').get((req, res) => {
-    Text.find()
+router.route('/:userId/texts').get((req, res) => {
+    const userId = req.params.userId;
+
+    Text.find({ userId })
         .then(texts => res.json(texts))
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/').post((req, res) => {
+router.route('/:userId/texts').post((req, res) => {
+    const userId = req.params.userId;
     const { name, image, message, link, status, segmentId } = req.body;
     const newText = new Text({ name, image, message, link, status });
+    newText.userId = userId;
     newText.segmentId = segmentId;
 
     newText.save()
@@ -18,7 +22,7 @@ router.route('/').post((req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/:id').post((req, res) => {
+router.route('/:userId/texts/:id').post((req, res) => {
     Text.findById(req.params.id)
         .then(text => {
             const { name, segmentId, image, message, link } = req.body;
@@ -35,7 +39,7 @@ router.route('/:id').post((req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/:id').delete((req, res) => {
+router.route('/:userId/texts/:id').delete((req, res) => {
     Text.findByIdAndDelete(req.params.id)
         .then(text => res.json(text))
         .catch(err => res.status(400).json(`Error: ${err}`));

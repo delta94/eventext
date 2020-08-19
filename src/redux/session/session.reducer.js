@@ -16,10 +16,7 @@ const sessionReducer = (state = initialState, action) => {
                 isAuthenticated: true
             };
         case sessionActionTypes.LOGOUT_USER:
-            return {
-                currentUser: null,
-                isAuthenticated: false
-            };
+            return initialState;
         default:
             return state;
     }

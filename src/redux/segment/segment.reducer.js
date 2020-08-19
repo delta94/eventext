@@ -1,7 +1,10 @@
 import { userActionTypes } from '../user/user.actions';
 import { segmentActionTypes } from './segment.actions';
+import { sessionActionTypes } from '../session/session.actions';
 
-const segmentReducer = (state = {}, action) => {
+const initialState = {};
+
+const segmentReducer = (state = initialState, action) => {
     Object.freeze(state);
 
     switch (action.type) {
@@ -25,6 +28,8 @@ const segmentReducer = (state = {}, action) => {
             });
 
             return newState;
+        case sessionActionTypes.LOGOUT_USER:
+            return initialState;
         default:
             return state;
     }

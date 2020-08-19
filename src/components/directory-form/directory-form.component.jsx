@@ -2,17 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-const DirectoryForm = ({ directories, segment }) => {
+import './directory-form.styles.scss';
 
-    const directoryList = directories.map(directory => (
-        <div key={directory._id} className='directory'>
-            {directory.name} {directory.mobile}
-        </div>
-    ));
+import DirectoryItems from '../directory-items/directory-items.component';
+
+const DirectoryForm = ({ directories, segment }) => {
 
     return (
         <div className='directory-form'>
-            {directoryList}
+            {directories.map(directory => (
+                <DirectoryItems key={directory._id} directory={directory} />
+            ))}
         </div>
     )
 }

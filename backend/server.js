@@ -28,9 +28,9 @@ const textsRouter = require('./routes/api/texts');
 const directoriesRouter = require('./routes/api/directories');
 
 app.use('/api/users', usersRouter);
-app.use('/api/users/:userId/segments', segmentsRouter);
-app.use('/api/users/:userId/texts', textsRouter);
-app.use('/api/users/:userId/directories', directoriesRouter);
+app.use('/api/users', segmentsRouter);
+app.use('/api/users', textsRouter);
+app.use('/api/users', directoriesRouter);
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);

@@ -1,5 +1,6 @@
 import { textActionTypes } from './text.actions';
 import { userActionTypes } from '../user/user.actions';
+import { sessionActionTypes } from '../session/session.actions';
 
 const initialState = {};
 
@@ -32,6 +33,8 @@ const textReducer = (state = initialState, action) => {
             });
 
             return newState;
+        case sessionActionTypes.LOGOUT_USER:
+            return initialState;
         default:
             return state;
     }

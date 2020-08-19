@@ -2,15 +2,19 @@ const router = require('express').Router();
 
 const Segment = require('../../models/segment.model');
 
-router.route('/').get((req, res) => {
-    Segment.find()
+router.route('/:userId/segments').get((req, res) => {
+    const userId = req.params.userId;
+
+    Segment.find({ userId })
         .then(segments => res.json(segments))
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/').post((req, res) => {
+router.route('/:userId/segments').post((req, res) => {
+    const userId = req.params.userId;
     const { name, directoryIds } = req.body;
     const newSegment = new Segment({ name });
+    newSegment.userId = userId;
     newSegment.directoryIds = directoryIds;
    
     newSegment.save()
@@ -18,7 +22,7 @@ router.route('/').post((req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/:id').post((req, res) => {
+router.route('/:userId/segments/:id').post((req, res) => {
     Segment.findById(req.params.id)
         .then(segment => {
             const { name, directoryIds } = req.body;
@@ -32,7 +36,7 @@ router.route('/:id').post((req, res) => {
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 
-router.route('/:id').delete((req, res) => {
+router.route('/:userId/segments/:id').delete((req, res) => {
     Segment.findByIdAndDelete(req.params.id)
         .then(segment => res.json(segment))
         .catch(err => res.status(400).json(`Error: ${err}`));
