@@ -1,25 +1,30 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
 
 import './directory-form.styles.scss';
 
-import DirectoryItems from '../directory-items/directory-items.component';
+const DirectoryForm = () => {
+    const [formClass, setFormClass] = useState('');
+    const [number, setNumber] = useState('');
 
-const DirectoryForm = ({ directories, segment }) => {
+    const handleBlur = () => {
+        if (number === '') setFormClass('');
+    };
 
-    return (
-        <div className='directory-form'>
-            {directories.map(directory => (
-                <DirectoryItems key={directory._id} directory={directory} />
-            ))}
+    return(
+        <div className={`directory-form ${formClass}`}>
+            <div className='directory-number'>
+                <input 
+                    type='text' 
+                    placeholder='Add new number' 
+                    value={number}
+                    onChange={e => setNumber(e.target.value)}
+                    onFocus={() => setFormClass('active')}
+                    onBlur={() => handleBlur()}
+                />
+                <i className='fas fa-phone-alt'></i>
+            </div>
         </div>
     )
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    directories: Object.values(state.directories),
-    segment: state.segments[ownProps.match.params.segmentId]
-});
-
-export default withRouter(connect(mapStateToProps)(DirectoryForm));
+export default DirectoryForm;

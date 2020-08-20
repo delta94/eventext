@@ -39,12 +39,12 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
 
         if (text) {
             data._id = text._id;
-            updateText(data, userId);
+            updateText(data, userId)
+                .then(() => history.push('/'));
         } else {
-            createText(data, userId);
+            createText(data, userId)
+                .then(() => history.push('/'));
         }
-
-        history.push('/');
     };
 
     const uploadMedia = e => {
@@ -134,6 +134,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                             ref={textarea} 
                             value={message} 
                             onChange={e => setMessage(e.target.value)} 
+                            placeholder='Add message'
                             data-test='input-text'
                         />
                     </div>

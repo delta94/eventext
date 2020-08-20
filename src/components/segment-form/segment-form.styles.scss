@@ -3,5 +3,48 @@
 
     form {
         width: 50%;
+
+        .segment-name {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin: 15px 0 10px 0;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+
+        input {
+            border: 1px solid #ddd;
+            padding: 8px 10px;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: border 250ms linear;
+            width: calc(100% - 52px);
+
+            &:focus {
+                border: 1px solid #0095fa;
+                transition: border 250ms linear;
+            }
+        }
+
+        .directory-counter {
+            padding: 20px 5px;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+
+        .cancel-save-buttons {
+            float: right;
+            padding-right: 30px;
+
+            button {
+                margin-left: 8px;
+            }
+        }
     }
 }

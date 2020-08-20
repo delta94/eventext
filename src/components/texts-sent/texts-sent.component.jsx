@@ -18,7 +18,7 @@ const TextsSent = ({ textsSent }) => {
                 <thead>
                     <tr>
                         <th>Event Name</th>
-                        <th>Amount Sent</th>
+                        <th>Sent Date</th>
                         <th>Segment</th>
                         <th>Action</th>
                     </tr>

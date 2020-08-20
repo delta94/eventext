@@ -18,7 +18,7 @@ export const TextItems = ({ item, segment, createText, deleteText, currentUser, 
 
     const segmentName = <td className='center'>{segment ? segment.name : null}</td>;
 
-    const amountSent = status === 'Sent' ? <td className='center'>{segment.directoryIds.length}</td> : null;
+    const sentDate = status === 'Sent' ? <td className='center'>{item.updatedAt}</td> : null;
 
     const cloneText = () => {
         const data = Object.assign({}, item);
@@ -44,7 +44,7 @@ export const TextItems = ({ item, segment, createText, deleteText, currentUser, 
     return(
         <tr>
             {textName}
-            {amountSent}
+            {sentDate}
             {segmentName}
             {action}
         </tr>
