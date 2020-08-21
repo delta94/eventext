@@ -12,8 +12,8 @@ router.route('/:userId/directories').get((req, res) => {
 
 router.route('/:userId/directories').post((req, res) => {
     const userId = req.params.userId;
-    const { name, mobile } = req.body;
-    const newDirectory = new Directory({ name, mobile });
+    const { firstName, lastName, mobile } = req.body;
+    const newDirectory = new Directory({ firstName, lastName, mobile });
     newDirectory.userId = userId;
 
     newDirectory.save()
@@ -24,8 +24,9 @@ router.route('/:userId/directories').post((req, res) => {
 router.route('/:userId/directories/:id').post((req, res) => {
     Directory.findById(req.params.id)
         .then(directory => {
-            const { name, mobile } = req.body;
-            directory.name = name;
+            const { firstName, lastName, mobile } = req.body;
+            directory.firstName = firstName;
+            directory.lastName = lastName;
             directory.mobile = mobile;
 
             directory.save()

@@ -16,7 +16,7 @@ router.route('/:userId/segments').post((req, res) => {
     const newSegment = new Segment({ name });
     newSegment.userId = userId;
     newSegment.directoryIds = directoryIds;
-   
+
     newSegment.save()
         .then(segment => res.json(segment))
         .catch(err => res.status(400).json(`Error: ${err}`));

@@ -6,10 +6,13 @@ const directorySchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    name: {
+    firstName: {
         type: String,
         required: true,
-        minlength: 3
+    },
+    lastName: {
+        type: String,
+        required: true,
     },
     mobile: {
         type: String,
