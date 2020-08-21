@@ -38,7 +38,7 @@ router.route('/:userId/directories/:id').post((req, res) => {
 
 router.route('/:userId/directories/:id').delete((req, res) => {
     Directory.findByIdAndDelete(req.params.id)
-        .then(() => res.json())
+        .then(directory => res.json(directory))
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 

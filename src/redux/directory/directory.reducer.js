@@ -25,6 +25,14 @@ const directoryReducer = (state = initialState, action) => {
                 ...state,
                 [action.directory._id]: action.directory
             };
+        case directoryActionTypes.REMOVE_DIRECTORY:
+            const newState = {};
+
+            Object.values(state).forEach(directory => {
+                if (directory._id !== action.directoryId) newState[directory._id] = directory;
+            });
+
+            return newState;
         case sessionActionTypes.LOGOUT_USER:
             return initialState;    
         default:
