@@ -9,19 +9,45 @@
     height: 70px;
     padding: 10px 35px;
     box-sizing: border-box;
-    transition: all 350ms ease-in-out;
+    transition: height 350ms ease-in-out;
+    overflow: hidden;
 
     &.active {
-        height: 200px;
+        height: 170px;
         transition: all 350ms ease-in-out;
     }
+    
+    form {
+        width: 100%;
 
-    .directory-number {
-        position: relative;
+        .directory-number,
+        .directory-name {
+            position: relative;
+        }
+
+        .directory-name-button {
+            height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+
+        .directory-name-button {
+            margin-top: 10px;
+
+            &.active {
+                height: auto;
+                opacity: 1;
+            }
+
+            button {
+                float: right;
+                margin-top: 10px;
+            }
+        }
 
         i {
             position: absolute;
-            top: 14px;
+            top: 15px;
             left: 20px;
             color: #ccc;
         }
@@ -34,9 +60,26 @@
             box-sizing: border-box;
             padding-left: 50px;
 
+            &:focus {
+                border: 0;
+            }
+
             &:focus ~ i {
                 color: #0095fa;
                 transition: color 250ms linear;
+            }
+
+            &.first-name {
+                width: 50%;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+
+            &.last-name {
+                width: 50%;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                padding-left: 25px;
             }
         }
     }

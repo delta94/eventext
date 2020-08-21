@@ -13,9 +13,7 @@ router.route('/:userId/segments').get((req, res) => {
 router.route('/:userId/segments').post((req, res) => {
     const userId = req.params.userId;
     const { name, directoryIds } = req.body;
-    const newSegment = new Segment({ name });
-    newSegment.userId = userId;
-    newSegment.directoryIds = directoryIds;
+    const newSegment = new Segment({ name, userId, directoryIds });
 
     newSegment.save()
         .then(segment => res.json(segment))

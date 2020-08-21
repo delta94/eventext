@@ -42,4 +42,13 @@
             }
         }
     }
+
+    .view-as {
+        width: fit-content;
+        margin: auto;
+
+        li {
+            width: 140px;
+        }
+    }
 }

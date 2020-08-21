@@ -9,6 +9,7 @@ import DirectoryForm from '../directory-form/directory-form.component';
 
 const Directories = ({ directories, people, setPeople }) => {
     const [searchInput, setSearchInput] = useState('');
+    const [formClass, setFormClass] = useState('');
 
     return (
         <div className='directories-container'>
@@ -23,19 +24,22 @@ const Directories = ({ directories, people, setPeople }) => {
                     <i className='fas fa-search'></i>
                 </div>
             </div>
-            <div className='directories'>
-                {directories.map(directory => (
-                    directory.name.toLowerCase().includes(searchInput.toLowerCase())
-                    ? <DirectoryItems 
-                        key={directory._id} 
-                        directory={directory} 
-                        people={people}
-                        setPeople={setPeople}
-                    />
-                    : null
-                ))}
+            <div className={`directories ${formClass}`}>
+                {directories
+                    .sort((a, b) => (a.firstName > b.firstName) - (a.firstName < b.firstName))
+                    .map(directory => {
+                        const fullName = `${directory.firstName} ${directory.lastName}`;
+                        return fullName.toLowerCase().includes(searchInput.toLowerCase())
+                            ? <DirectoryItems 
+                                key={directory._id} 
+                                directory={directory} 
+                                people={people}
+                                setPeople={setPeople}
+                            />
+                            : null
+                })}
             </div>
-            <DirectoryForm />
+            <DirectoryForm formClass={formClass} setFormClass={setFormClass} />
         </div>
     )
 }

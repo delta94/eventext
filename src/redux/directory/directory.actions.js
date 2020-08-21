@@ -1,15 +1,15 @@
 import * as directoryUtil from './directory.utils';
 
-export const directoryTypes = {
-    RECEIVE_ALL_DIRECTORIES: 'RECEIVE_ALL_DIRECTORIES'
+export const directoryActionTypes = {
+    RECEIVE_DIRECTORY: 'RECEIVE_DIRECTORY'
 };
 
-const receiveAllDirectories = directories => ({
-    type: directoryTypes.RECEIVE_ALL_DIRECTORIES,
-    directories
+const receiveDirectory = directory => ({
+    type: directoryActionTypes.RECEIVE_DIRECTORY,
+    directory
 });
 
-export const fetchAllDirectories = userId => dispatch => (
-    directoryUtil.fetchAllDirectories(userId)
-        .then(directories => dispatch(receiveAllDirectories(directories)))
+export const createDirectory = (directory, userId) => dispatch => (
+    directoryUtil.createDirectory(directory, userId)
+        .then(directory => dispatch(receiveDirectory(directory.data)))
 );

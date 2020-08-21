@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-export const fetchAllDirectories = userId => (
-    axios.get(`http://localhost:5000/api/users/${userId}/directories`)
+export const createDirectory = (directory, userId) => (
+    axios.post(`http://localhost:5000/api/users/${userId}/directories`, directory)
 );

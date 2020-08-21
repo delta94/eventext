@@ -19,7 +19,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
     const [message, setMessage] = useState('');
     const [tag, setTag] = useState('Add Tag');
     const textarea = useRef();
-    const tags = ['{first_name}', '{last_name}', '{nickname}'];
+    const tags = ['{first_name}', '{last_name}'];
 
     useEffect(() => {
         if (text) {
@@ -116,7 +116,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                         <div className='media-tag'>
                             <div className='media-button'>
                                 <input type='file' title='' onChange={e => uploadMedia(e)} />
-                                <Button color='blue'>Add Photo or GIF</Button>
+                                <Button color='blue'>Add Giphy</Button>
                             </div>
                             <div className='tag-button'>
                                 <Select 
@@ -146,7 +146,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                     </div>
                 </form>
             </div>
-            <TextFormPreview media={media} message={message} tags={tags} image={<Image />} />
+            <TextFormPreview media={media} message={message} image={<Image />} tags={tags} segmentId={segments[segmentName]} />
         </div>
     )
 };

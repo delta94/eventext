@@ -23,7 +23,7 @@ const DirectoryItems = ({ directory, people, setPeople }) => {
             onClick={() => handleClick()}>
             <div className='directory-name'>
                 <i className='fas fa-user'></i>
-                {directory.name}
+                {directory.firstName} {directory.lastName}
             </div>
             <div className='directory-mobile'>
                 {directory.mobile}

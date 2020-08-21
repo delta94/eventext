@@ -1,9 +1,5 @@
 import axios from 'axios';
 
-export const fetchAllTexts = userId => (
-    axios.get(`http://localhost:5000/api/users/${userId}/texts`)
-);
-
 export const createText = (text, userId) => (
     axios.post(`http://localhost:5000/api/users/${userId}/texts`, text)
 );

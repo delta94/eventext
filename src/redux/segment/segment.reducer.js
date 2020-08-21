@@ -20,6 +20,11 @@ const segmentReducer = (state = initialState, action) => {
                 ...state,
                 ...segments
             };
+        case segmentActionTypes.RECEIVE_SEGMENT:
+            return {
+                ...state,
+                [action.segment._id]: action.segment
+            };
         case segmentActionTypes.REMOVE_SEGMENT:
             const newState = {};
 
