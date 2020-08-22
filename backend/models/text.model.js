@@ -14,7 +14,7 @@ const textSchema = new Schema({
         required: true
     },
     media: {
-        type: Buffer
+        type: String
     },
     message: {
         type: String,

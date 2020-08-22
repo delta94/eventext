@@ -21,7 +21,13 @@ const DirectoryItems = ({ directory, people, setPeople, deleteDirectory, current
     const clicked = () => people.includes(directory._id);
 
     const handleDelete = () => {
-        deleteDirectory(directory._id, currentUser._id);
+        deleteDirectory(directory._id, currentUser._id)
+            .then(() => {
+                if (clicked()) {
+                    const newPeople = people.filter(personId => personId !== directory._id);
+                    setPeople(newPeople);
+                }
+            });
     };
 
     return(

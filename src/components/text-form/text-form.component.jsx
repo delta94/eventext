@@ -9,6 +9,7 @@ import { createText, updateText } from '../../redux/text/text.actions';
 import Button from '../custom-button/custom-button.component';
 import Select from '../custom-select/custom-select.component';
 import WithSpinner from '../with-spinner/with-spinner.component';
+import GiphyModal from '../giphy-modal/giphy-modal.component';
 
 const TextForm = ({ text, segment, segments, createText, updateText, currentUser, history }) => {
   
@@ -18,6 +19,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
     const [loading, setLoading] = useState(true);
     const [message, setMessage] = useState('');
     const [tag, setTag] = useState('Add Tag');
+    const [giphyModal, setGiphyModal] = useState(false);
     const textarea = useRef();
     const tags = ['{first_name}', '{last_name}'];
 
@@ -47,21 +49,6 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
         }
     };
 
-    const uploadMedia = e => {
-        const file = e.currentTarget.files[0];
-        const reader = new FileReader();
-
-        reader.onloadend = () => {
-            setMedia(reader.result);
-        };
-
-        if (file) {
-            reader.readAsDataURL(file);
-        } else {
-            setMedia(null);
-        }
-    };
-
     const insertTag = () => {
         textarea.current.focus();
         const start = textarea.current.selectionStart;
@@ -86,8 +73,18 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
         <WithSpinner media={media} loading={loading} setLoading={setLoading} />
     );
 
+    const openGiphyModal = e => {
+        e.preventDefault();
+        setGiphyModal(true)
+    };
+
+    const closeGiphyModal = e => {
+        setGiphyModal(false)
+    };
+
     return (
         <div className='form-container'>
+            {giphyModal ? <GiphyModal closeGiphyModal={closeGiphyModal} media={media} setMedia={setMedia} /> : null}
             <div className='form'>
                 <form>
                     <div className='event-name'>
@@ -102,21 +99,26 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                     </div>
                     <div className='segment'>
                         <label>Segment</label>
-                        <Select
-                            options={Object.keys(segments)}
-                            setState={setSegmentName}
-                            color='white-blue'
-                            id='segment'>
-                            {segmentName}
-                        </Select>
+                        {Object.keys(segments).length > 0
+                            ? <Select
+                                options={Object.keys(segments)}
+                                setState={setSegmentName}
+                                color='white-blue'
+                                id='segment'>
+                                {segmentName}
+                            </Select>
+                            : <Button 
+                                link='segments/add' 
+                                color='white-blue'>
+                                Create Segment
+                            </Button>}
                     </div>
                     <div className='message'>
                         <label>Message</label>
                         <MediaPreview />
                         <div className='media-tag'>
                             <div className='media-button'>
-                                <input type='file' title='' onChange={e => uploadMedia(e)} />
-                                <Button color='blue'>Add Giphy</Button>
+                                <Button color='blue' action={openGiphyModal}>Add GIPHY</Button>
                             </div>
                             <div className='tag-button'>
                                 <Select 

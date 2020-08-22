@@ -12,8 +12,8 @@ router.route('/:userId/texts').get((req, res) => {
 
 router.route('/:userId/texts').post((req, res) => {
     const userId = req.params.userId;
-    const { name, image, message, link, status, segmentId } = req.body;
-    const newText = new Text({ name, image, message, link, status });
+    const { name, media, message, link, status, segmentId } = req.body;
+    const newText = new Text({ name, media, message, link, status });
     newText.userId = userId;
     newText.segmentId = segmentId;
 
@@ -25,10 +25,10 @@ router.route('/:userId/texts').post((req, res) => {
 router.route('/:userId/texts/:id').post((req, res) => {
     Text.findById(req.params.id)
         .then(text => {
-            const { name, segmentId, image, message, link } = req.body;
+            const { name, segmentId, media, message, link } = req.body;
             text.name = name;
             text.segmentId = segmentId;
-            text.image = image;
+            text.media = media;
             text.message = message;
             text.link = link;
 
