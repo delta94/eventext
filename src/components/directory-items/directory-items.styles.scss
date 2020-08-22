@@ -3,11 +3,13 @@
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px;
+    padding: 9px 20px;
     border: 2px solid #f3f3f3;
     border-radius: 25px;
     margin: 10px 0;
     margin-left: 15px;
+    font-size: 14px;
+    line-height: 1.5;
     cursor: pointer;
 
     &.clicked,
@@ -21,6 +23,7 @@
         background-color: #f3f3f3;
 
         .directory-mobile i {
+            font-size: 15px;
             width: auto;
             transition: margin 250ms linear;
             opacity: 1;
@@ -29,12 +32,16 @@
     }
     
     .directory-name {
+        margin-left: 5px;
+
         i {
             margin-right: 15px;
         }
     }
 
     .directory-mobile {
+        margin-right: 8px;
+
         i {
             width: 0;
             color: #ff0000;

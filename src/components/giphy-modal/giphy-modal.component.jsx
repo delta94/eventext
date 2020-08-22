@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import './giphy-modal.styles.scss';
-import giphyLogo from '../../assets/giphy-logo.png';
 
 import Button from '../custom-button/custom-button.component';
 import GiphyItems from '../giphy-items/giphy-items.component';
@@ -53,9 +52,9 @@ const GiphyModal = ({ closeGiphyModal, setMedia, media }) => {
                         value={searchInput}
                         onChange={e => setSearchInput(e.target.value)} 
                         onKeyPress={e => e.key === 'Enter' ? searchGiphy() : null}
-                        placeholder='Search GIPHY'
+                        placeholder='Search'
                     />
-                    <i class="fas fa-search" onClick={searchGiphy}></i>
+                    <i className='fas fa-search' onClick={searchGiphy}></i>
                 </div>
                 <div className='giphy-items-container'>
                     {data ? data.map(giphy => <GiphyItems key={giphy.id} giphy={giphy} currentGiphy={currentGiphy} setCurrentGiphy={setCurrentGiphy} />) : null}
@@ -65,7 +64,7 @@ const GiphyModal = ({ closeGiphyModal, setMedia, media }) => {
                         <Button action={handleSubmit} color='blue'>Add</Button>
                     </div>
                     <div className='giphy-logo'>
-                        <img src={giphyLogo} />
+                        Powered by GIPHY
                     </div>
                 </div>
             </div>

@@ -118,7 +118,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                         <MediaPreview />
                         <div className='media-tag'>
                             <div className='media-button'>
-                                <Button color='blue' action={openGiphyModal}>Add GIPHY</Button>
+                                <Button color='blue' action={openGiphyModal}>{media ? 'Edit' : 'Add'} GIPHY</Button>
                             </div>
                             <div className='tag-button'>
                                 <Select 
@@ -143,7 +143,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                     <div className='cancel-save-btn'>
                         <Button link='' color='white-blue'>Cancel</Button>
                         <span data-test='submit-button'>
-                            <Button color='dark-blue' action={handleSubmit}>Save</Button>
+                            <Button color='blue' action={handleSubmit}>Save</Button>
                         </span>
                     </div>
                 </form>

@@ -7,7 +7,7 @@ const backgroundColor = color => {
         case 'dark-blue':
             return '#0064d4';
         case 'gray':
-            return '#bbb';
+            return '#aaa';
         case 'red':
             return '#e60a7d';
         default:
@@ -24,7 +24,7 @@ const border = color => {
         case 'dark-blue':
             return '1px solid #0064d4';
         case 'gray':
-            return '1px solid #bbb';
+            return '1px solid #aaa';
         case 'red':
             return '1px solid #e60a7d';
         default:
@@ -43,7 +43,7 @@ const fontColor = color => {
 
 export const CustomButton = styled.button`
     border-radius: 5px;
-    padding: 6px 10px;
+    padding: 7px 12px;
     border: ${({ color }) => border(color)};
     color: ${({ color }) => fontColor(color)};
     background-color: ${({ color }) => backgroundColor(color)};

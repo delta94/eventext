@@ -46,7 +46,7 @@ const SegmentForm = ({ segment, createSegment, updateSegment, currentUser, histo
                 </div>
                 <div className='cancel-save-buttons'>
                     <Button color='white-blue' link='segments'>Cancel</Button>
-                    <Button color='dark-blue' action={handleSubmit}>Save</Button>
+                    <Button color='blue' action={handleSubmit}>Save</Button>
                 </div>
             </form>
             <Directories setPeople={setPeople} people={people} />

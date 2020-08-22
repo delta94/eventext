@@ -18,14 +18,20 @@ export const TextItems = ({ item, segment, createText, deleteText, currentUser, 
 
     const segmentName = <td className='center'>{segment ? segment.name : null}</td>;
 
-    const sentDate = status === 'Sent' ? <td className='center'>{item.updatedAt}</td> : null;
+    const sentDate = () => {
+        let date = item.updatedAt.split('-');
+        const year = date.shift();
+        date.push(year);
+        date[1] = date[1].slice(0, 2);
+        date = date.join('/')
+
+        return status === 'Sent' ? <td className='center'>{date}</td> : null;
+    };
 
     const cloneText = () => {
-        const data = Object.assign({}, item);
-        data.status = 'Draft';
-        data.stats = null;
+        const newData = { name: item.name, message: item.message, media: item.media, segmentId: segment._id, status: 'Draft' };
 
-        createText(data);
+        createText(newData, currentUser._id);
     };
 
     const removeText = () => {
@@ -34,17 +40,17 @@ export const TextItems = ({ item, segment, createText, deleteText, currentUser, 
 
     const action = status === 'Sent' 
         ? <td className='right'>
-            <Button color='red' action={cloneText}>Clone</Button>
+            <Button color='red' action={cloneText}><i className='far fa-clone'></i></Button>
         </td> 
         : <td className='right'>
             <Button link={`edit/${_id}`} color='blue'>Edit</Button>&nbsp;
-            <Button color='gray' action={removeText}>Delete</Button>
+            <Button color='gray' action={removeText}><i className='far fa-trash-alt'></i></Button>
         </td>;
 
     return(
         <tr>
             {textName}
-            {sentDate}
+            {sentDate()}
             {segmentName}
             {action}
         </tr>
@@ -57,7 +63,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    createText: data => dispatch(createText(data)),
+    createText: (data, userId) => dispatch(createText(data, userId)),
     deleteText: (textId, userId) => dispatch(deleteText(textId, userId))
 });
 

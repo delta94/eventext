@@ -24,7 +24,7 @@ const SegmentItems = ({ segment, history, deleteSegment, currentUser }) => {
             </td>
             <td className='right'>
                 <Button color='blue' link={`segments/edit/${segment._id}`}>Edit</Button>&nbsp;
-                <Button color='gray' action={removeSegment}>Delete</Button>
+                <Button color='gray' action={removeSegment}><i className='far fa-trash-alt'></i></Button>
             </td>
         </tr>
     )

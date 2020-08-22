@@ -9,9 +9,9 @@ const Header = ({ history }) => {
  
     const CreateButton = () => {
         if (history.location.pathname === '/') {
-            return <Button link='add' color='blue'>Create</Button>;
+            return <Button link='add' color='blue'>New</Button>;
         } else if (history.location.pathname === '/segments') {
-            return <Button link='segments/add' color='blue'>Create</Button>;
+            return <Button link='segments/add' color='blue'>New</Button>;
         } else {
             return null;
         }

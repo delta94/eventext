@@ -13,7 +13,9 @@
         margin: 5% auto;
         position: relative;
         opacity: 0;
-        padding: 5px;
+        padding: 4px;
+        padding-top: 26px;
+        border-radius: 3px;
 
         &.active {
             opacity: 1;
@@ -35,14 +37,18 @@
         .search-bar {
             width: 100%;
             position: absolute;
-            background-color: #eee;
+            background-color: #f8f9fa;
             left: 0;
             top: 0;
-            padding: 10px 25px;
+            padding: 14px;
+            padding-top: 15px;
             box-sizing: border-box;
+            border-top-left-radius: 3px;
+            border-top-right-radius: 3px;
+            border-bottom: 1px solid #eee;
 
             input {
-                border: 0;
+                border: 1px solid #eee;
                 border-radius: 20px;
                 height: 35px;
                 width: 100%;
@@ -57,8 +63,8 @@
 
             i {
                 position: absolute;
-                right: 45px;
-                top: 20px;
+                right: 38px;
+                top: 25px;
                 cursor: pointer;
                 color: #ccc;
                 transition: color 150ms linear;
@@ -66,20 +72,30 @@
         }
 
         .giphy-items-container {
-            margin-top: 55px;
+            margin-top: 56px;
+            margin-bottom: 15px;
         }
 
         .giphy-modal-footer {
-            padding: 8px 5px;
+            position: absolute;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom-left-radius: 3px;
+            border-bottom-right-radius: 3px;
+            left: 0;
+            padding: 12px 14px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
 
             .add-giphy-button {
                 float: right;
             }
 
             .giphy-logo {
-                img {
-                    width: 75px;
-                }
+                font-size: 12px;
+                color: #999;
+                margin-top: 12px;
+                font-weight: 600;
             }
         }
     }
