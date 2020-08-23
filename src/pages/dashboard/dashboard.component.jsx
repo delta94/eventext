@@ -9,6 +9,7 @@ import Header from '../../components/header/header.component';
 import TextsDrafts from '../../components/texts-drafts/texts-drafts.component';
 import TextsSent from '../../components/texts-sent/texts-sent.component';
 import TextForm from '../../components/text-form/text-form.component';
+import TextPreview from '../../components/text-preview/text-preview.component';
 import Segments from '../../components/segments/segments.component';
 import SegmentForm from '../../components/segment-form/segment-form.component';
 import { logout } from '../../redux/session/session.actions';
@@ -25,6 +26,7 @@ const Dashboard = ({ logout }) => (
                 />
                 <Route path='/add' component={TextForm} />
                 <Route path='/edit/:textId' component={TextForm} />
+                <Route path='/preview/:textId' component={TextPreview} />
                 <Route exact path='/segments' component={Segments} />
                 <Route path='/segments/add' component={SegmentForm} />
                 <Route path='/segments/edit/:segmentId' component={SegmentForm} />

@@ -28,15 +28,18 @@ const Header = ({ history }) => {
             return null;
         } else {
             let title;
-            let pathname = history.location.pathname;
+            const page = history.location.pathname.split('/');
 
-            if (pathname === '/add') {
-                title = <h1>Create Message</h1>;
-            } else if (pathname === '/segments/add') {
-                title = <h1>Create Segment</h1>;
+            if (page[1] === 'segments') {
+                title = page[2] === 'add' ? <h1>Create Segment</h1> : <h1>Edit Segment</h1>;
             } else {
-                const length = pathname.split("/").length;
-                title = length > 3 ? <h1>Edit Segment</h1> : <h1>Edit Text</h1>;
+                if (page[1] === 'add') {
+                    title = <h1>Create Message</h1>;
+                } else if (page[1] === 'edit') {
+                    title = <h1>Edit Message</h1>
+                } else {
+                    title = <h1>View Message</h1>
+                }
             }
 
             return (

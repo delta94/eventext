@@ -42,7 +42,6 @@ const TextFormPreview = ({ media, message, image, tags, directories, segmentId }
 
     return (
         <div className='form-preview'>
-     
             <div className='view-as'>
                 <Select color='white-blue' options={Object.keys(directories)} setState={setView}>{view}</Select>
             </div>
@@ -55,9 +54,6 @@ const TextFormPreview = ({ media, message, image, tags, directories, segmentId }
                         : <div className='text' data-test='preview-text'>{message}</div>}
                 </div>
             </div>
-            {/* <div className='view-as'>
-                <Select color='white-blue' options={Object.keys(directories)} setState={setView}>{view}</Select>
-            </div> */}
         </div>
     )
 }
@@ -66,8 +62,8 @@ const mapStateToProps = (state, ownProps) => {
     const directories = {};
     const segmentId = ownProps.segmentId;
 
-    if (segmentId) {
-        const directoryIds = state.segments[ownProps.segmentId].directoryIds;
+    if (segmentId && state.segments[segmentId]) {
+        const directoryIds = state.segments[segmentId].directoryIds;
      
         directoryIds.forEach(id => {
             if (state.directories[id]) {

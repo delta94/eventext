@@ -11,7 +11,7 @@ export const TextItems = ({ item, segment, createText, deleteText, currentUser, 
     const { _id, name, status } = item;
 
     const textName = (
-        <td className='name' onClick={() => history.push(`/edit/${_id}`)}>
+        <td className='name' onClick={() => history.push(`/preview/${_id}`)}>
             {name}
         </td>
     )

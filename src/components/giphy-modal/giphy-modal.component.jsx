@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 import './giphy-modal.styles.scss';
 
@@ -10,9 +10,11 @@ const GiphyModal = ({ closeGiphyModal, setMedia, media }) => {
     const [data, setData] = useState(null);
     const [searchInput, setSearchInput] = useState('');
     const [currentGiphy, setCurrentGiphy] = useState(media);
+    const search = useRef();
 
     useEffect(() => {
         setModalActive('active');
+        search.current.focus();
 
         fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
             .then(response => response.json())
@@ -53,6 +55,7 @@ const GiphyModal = ({ closeGiphyModal, setMedia, media }) => {
                         onChange={e => setSearchInput(e.target.value)} 
                         onKeyPress={e => e.key === 'Enter' ? searchGiphy() : null}
                         placeholder='Search'
+                        ref={search}
                     />
                     <i className='fas fa-search' onClick={searchGiphy}></i>
                 </div>

@@ -42,10 +42,10 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
         if (text) {
             data._id = text._id;
             updateText(data, userId)
-                .then(() => history.push('/'));
+                .then(response => history.push(`/preview/${response.text.data._id}`));
         } else {
             createText(data, userId)
-                .then(() => history.push('/'));
+                .then(response => history.push(`/preview/${response.text.data._id}`));
         }
     };
 
@@ -143,7 +143,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                     <div className='cancel-save-btn'>
                         <Button link='' color='white-blue'>Cancel</Button>
                         <span data-test='submit-button'>
-                            <Button color='blue' action={handleSubmit}>Save</Button>
+                            <Button color='blue' action={handleSubmit}>Save & Preview</Button>
                         </span>
                     </div>
                 </form>

@@ -1,0 +1,42 @@
+.text-preview-container {
+    display: flex;
+
+    .text-preview {
+        width: 50%;
+
+        & > div {
+            margin: 20px 0;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: 600;
+            margin-right: 3px;
+        }
+
+        .media {
+            img {
+                margin-top: 10px;
+                width: 100px;
+            }
+        }
+
+        .message {
+            margin-top: 10px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 3px;
+        }
+
+        .preview-buttons {
+            display: flex;
+            justify-content: space-between;
+
+            .edit-send-button {
+                button {
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+}
