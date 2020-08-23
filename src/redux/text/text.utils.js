@@ -11,3 +11,7 @@ export const updateText = (text, userId) => (
 export const deleteText = (textId, userId) => (
     axios.delete(`http://localhost:5000/api/users/${userId}/texts/${textId}`)
 );
+
+export const sendText = (textId, userId) => (
+    axios.post(`http://localhost:5000/api/users/${userId}/texts/send/${textId}`)
+);

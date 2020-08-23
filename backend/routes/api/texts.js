@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const Text = require('../../models/text.model');
+const Segment = require('../../models/segment.model');
 
 router.route('/:userId/texts').get((req, res) => {
     const userId = req.params.userId;
@@ -42,6 +43,18 @@ router.route('/:userId/texts/:id').post((req, res) => {
 router.route('/:userId/texts/:id').delete((req, res) => {
     Text.findByIdAndDelete(req.params.id)
         .then(text => res.json(text))
+        .catch(err => res.status(400).json(`Error: ${err}`));
+});
+
+router.route('/:userId/texts/send/:id').post((req, res) => {
+    Text.findById(req.params.id)
+        .then(text => {
+            text.status = 'Sent';
+
+            text.save()
+                .then(text => res.json(text))
+                .catch(err => res.status(400).json(`Error: ${err}`));
+        })
         .catch(err => res.status(400).json(`Error: ${err}`));
 });
 

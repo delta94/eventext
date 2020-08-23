@@ -29,3 +29,8 @@ export const deleteText = (textId, userId) => dispatch => (
     textUtil.deleteText(textId, userId)
         .then(text => dispatch(removeText(text.data._id)))
 );
+
+export const sendText = (textId, userId) => dispatch => (
+    textUtil.sendText(textId, userId)
+        .then(text => dispatch(receiveText(text)))
+);

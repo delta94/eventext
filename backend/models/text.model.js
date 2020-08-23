@@ -7,8 +7,7 @@ const textSchema = new Schema({
         ref: 'User'
     },
     segmentId: {
-        type: String,
-        required: true
+        type: String
     },
     name: {
         type: String,

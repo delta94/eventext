@@ -14,18 +14,16 @@
             margin-right: 3px;
         }
 
-        .media {
-            img {
-                margin-top: 10px;
-                width: 100px;
-            }
-        }
-
         .message {
             margin-top: 10px;
             background-color: #f8f9fa;
             padding: 15px;
             border-radius: 3px;
+
+            img {
+                margin-bottom: 10px;
+                width: 120px;
+            }
         }
 
         .preview-buttons {

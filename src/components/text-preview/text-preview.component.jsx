@@ -1,12 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import './text-preview.styles.scss';
 
 import Button from '../custom-button/custom-button.component';
 import TextFormPreview from '../text-form-preview/text-form-preview.component';
+import { sendText } from '../../redux/text/text.actions';
 
-const TextPreview = ({ text, segment }) => {
+const TextPreview = ({ text, segment, sendText, currentUser, history }) => {
+    const handleSubmit = () => {
+        sendText(text._id, currentUser._id)
+            .then(() => history.push('/'));
+    };
+
     const renderButtons = () => {
         if (text && text.status === 'Draft') {
             return (
@@ -14,7 +21,7 @@ const TextPreview = ({ text, segment }) => {
                     <Button color='white-blue' link=''>Cancel</Button>
                     <div className='edit-send-button'>
                         <Button color='blue' link={`edit/${text._id}`}>Edit</Button>
-                        <Button color='red'>Send</Button>
+                        <Button color='red' action={handleSubmit}>Send</Button>
                     </div>
                 </div>
             )
@@ -40,11 +47,7 @@ const TextPreview = ({ text, segment }) => {
 
     const renderMedia = () => {
         if (text.media) {
-            return (
-                <div className='media'>
-                    <label>Media</label><br />
-                    <img src={text.media} alt='media' />
-                </div>)
+            return <div><img src={text.media} alt='media' /></div>
         } else {
             return null;
         }
@@ -77,10 +80,12 @@ const TextPreview = ({ text, segment }) => {
                     </div>
                     {renderSegment()}
                     {renderSentDate()}
-                    {renderMedia()}
                     <div className='message-container'>
                         <label>Message</label>
-                        <div className='message'>{text.message}</div>
+                        <div className='message'>
+                            {renderMedia()}
+                            {text.message}
+                        </div>
                     </div>
                     {renderButtons()}
                 </div>
@@ -101,8 +106,13 @@ const TextPreview = ({ text, segment }) => {
 const mapStateToProps = (state, ownProps) => {
     const text = state.texts[ownProps.match.params.textId];
     const segment = text ? state.segments[text.segmentId] : null;
+    const currentUser = state.session.currentUser;
 
-    return { text, segment };
+    return { text, segment, currentUser };
 }
 
-export default connect(mapStateToProps)(TextPreview);
+const mapDispatchToProps = dispatch => ({
+    sendText: (textId, userId) => dispatch(sendText(textId, userId))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TextPreview));
