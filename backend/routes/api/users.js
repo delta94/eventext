@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const keys = require('../../config/keys');
 
 const User = require('../../models/user.model');
+const validateRegisterInput = require('../../validation/register');
 
 router.route('/').get((req, res) => {
     User.find()
@@ -18,6 +19,10 @@ router.route('/:id').get((req, res) => {
 });
 
 router.route('/register').post((req, res) => {
+    const { errors, valid } = validateRegisterInput(req.body);
+    console.log(errors);
+    if (!valid) return res.status(400).json(errors);
+
     const { name, email, mobile, password } = req.body;
     const newUser = new User({ name, email, mobile, password });
 

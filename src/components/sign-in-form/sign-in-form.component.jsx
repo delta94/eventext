@@ -32,7 +32,7 @@ const SignInForm = ({ setPage, login }) => {
     return (
         <div className={`sign-in ${signInClass}`}>
             <form>
-                <Input type='email' handleChange={setEmail} value={email}>Email</Input>
+                <Input type='text' handleChange={setEmail} value={email}>Email</Input>
                 <Input type='password' handleChange={setPassword} value={password}>Password</Input>
                 <button 
                     className='login-button'

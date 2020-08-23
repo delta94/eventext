@@ -17,7 +17,7 @@ const Segments = ({ segments }) => (
                 </tr>
             </thead>
             <tbody>
-                {segments.map(segment => (
+                {segments.reverse().map(segment => (
                     <SegmentItems key={segment._id} segment={segment} />
                 ))}
             </tbody>

@@ -6,7 +6,7 @@ import './texts-drafts.styles.scss';
 import TextItems from '../text-items/text-items.component';
 
 const TextsDrafts = ({ textsDrafts }) => {
-    const texts = textsDrafts.map(text => {
+    const texts = textsDrafts.reverse().map(text => {
         return <TextItems key={text._id} item={text} />
     });
 

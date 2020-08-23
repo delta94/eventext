@@ -7,7 +7,7 @@ import TextItems from '../text-items/text-items.component';
 
 const TextsSent = ({ textsSent }) => {
 
-    const texts = textsSent.map(text => (
+    const texts = textsSent.reverse().map(text => (
         <TextItems key={text._id} item={text} />
     ));
 

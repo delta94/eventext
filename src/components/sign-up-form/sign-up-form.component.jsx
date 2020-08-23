@@ -20,7 +20,7 @@ const SignUpForm = ({ setPage, createUser }) => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        const user = { name, email, mobile, password };
+        const user = { name, email, mobile, password, confirmPassword };
         createUser(user);
     };
 
@@ -28,7 +28,7 @@ const SignUpForm = ({ setPage, createUser }) => {
         <div className={`sign-up ${signUpClass}`}>
             <form onSubmit={handleSubmit}>
                 <Input type='text' handleChange={setName} value={name}>Full Name</Input>
-                <Input type='email' handleChange={setEmail} value={email}>Email</Input>
+                <Input type='text' handleChange={setEmail} value={email}>Email</Input>
                 <Input type='tel' handleChange={setMobile} value={mobile}>Mobile Number</Input>
                 <Input type='password' handleChange={setPassword} value={password}>Password</Input>
                 <Input type='password' handleChange={setConfirmPassword} value={confirmPassword}>Confirm Password</Input>
