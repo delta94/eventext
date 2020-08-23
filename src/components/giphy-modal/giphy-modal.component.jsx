@@ -16,19 +16,19 @@ const GiphyModal = ({ closeGiphyModal, setMedia, media }) => {
         setModalActive('active');
         search.current.focus();
 
-        fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
+        fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
             .then(response => response.json())
             .then(response => setData(response.data));
     }, []);
 
     const searchGiphy = () => {
-        fetch(`http://api.giphy.com/v1/gifs/search?q=${searchInput}&api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
+        fetch(`http://api.giphy.com/v1/stickers/search?q=${searchInput}&api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
             .then(response => response.json())
             .then(response => {
                 if (response.data.length > 0) {
                     setData(response.data);
                 } else {
-                    fetch(`http://api.giphy.com/v1/gifs/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
+                    fetch(`http://api.giphy.com/v1/stickers/trending?api_key=${process.env.REACT_APP_API_KEY}&limit=9`)
                         .then(response => response.json())
                         .then(response => setData(response.data));
                 }
@@ -60,7 +60,16 @@ const GiphyModal = ({ closeGiphyModal, setMedia, media }) => {
                     <i className='fas fa-search' onClick={searchGiphy}></i>
                 </div>
                 <div className='giphy-items-container'>
-                    {data ? data.map(giphy => <GiphyItems key={giphy.id} giphy={giphy} currentGiphy={currentGiphy} setCurrentGiphy={setCurrentGiphy} />) : null}
+                    {data
+                        ? data.map(giphy => {
+                            return <GiphyItems 
+                                key={giphy.id} 
+                                giphy={giphy} 
+                                currentGiphy={currentGiphy} 
+                                setCurrentGiphy={setCurrentGiphy} 
+                            />
+                        }) 
+                        : null}
                 </div>
                 <div className='giphy-modal-footer'>
                     <div className='add-giphy-button'>

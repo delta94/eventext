@@ -12,17 +12,43 @@
             font-size: 16px;
             font-weight: 600;
             margin-right: 3px;
+            display: inline-block;
+            width: 110px;
         }
 
-        .message {
-            margin-top: 10px;
-            background-color: #f8f9fa;
-            padding: 15px 10px;
-            border-radius: 3px;
+        .segment-count {
+            display: flex;
 
-            img {
-                margin-bottom: 10px;
-                width: 120px;
+            .count {
+                margin-left: 5px;
+                position: relative;
+                
+                span {
+                    font-weight: 600;
+                    color: #0095f6;
+                    cursor: pointer;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .message-container {
+            display: flex;
+     
+            .message {
+                background-color: #f8f9fa;
+                padding: 15px;
+                border-radius: 3px;
+                line-height: 1.5;
+                width: calc(100% - 110px);
+                box-sizing: border-box;
+
+                img {
+                    width: 120px;
+                }
             }
         }
 

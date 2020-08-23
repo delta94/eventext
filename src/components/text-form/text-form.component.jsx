@@ -118,7 +118,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                         <MediaPreview />
                         <div className='media-tag'>
                             <div className='media-button'>
-                                <Button color='blue' action={openGiphyModal}>{media ? 'Edit' : 'Add'} GIPHY</Button>
+                                <Button color='blue' action={openGiphyModal}>{media ? 'Edit' : 'Add'} Sticker</Button>
                             </div>
                             <div className='tag-button'>
                                 <Select 

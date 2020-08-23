@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -6,9 +6,12 @@ import './text-preview.styles.scss';
 
 import Button from '../custom-button/custom-button.component';
 import TextFormPreview from '../text-form-preview/text-form-preview.component';
+import SegmentListDropdown from '../segment-list-dropdown/segment-list-dropdown';
 import { sendText } from '../../redux/text/text.actions';
 
 const TextPreview = ({ text, segment, sendText, currentUser, history }) => {
+    const [segmentDropdown, showSegmentDropdown] = useState(false);
+
     const handleSubmit = () => {
         sendText(text._id, currentUser._id)
             .then(() => history.push('/'));
@@ -37,8 +40,18 @@ const TextPreview = ({ text, segment, sendText, currentUser, history }) => {
     const renderSegment = () => {
         if (segment) {
             return (
-                <div>
+                <div className='segment-count'>
                     <label>Segment</label> {segment.name}
+                    <div className='count'>
+                        (<span 
+                            onMouseEnter={() => showSegmentDropdown(true)}
+                            onMouseLeave={() => showSegmentDropdown(false)}>
+                            {segment.directoryIds.length}
+                        </span>)
+                        {segmentDropdown
+                            ? <SegmentListDropdown directoryIds={segment.directoryIds} />
+                            : null}
+                    </div>
                 </div>)
         } else {
             return null;
@@ -63,7 +76,7 @@ const TextPreview = ({ text, segment, sendText, currentUser, history }) => {
         if (text.status === 'Sent') {
             return (
                 <div>
-                    <label>Sent Date</label> {date}
+                    <label>Date Sent</label> {date}
                 </div>
             )
         } else {
@@ -76,7 +89,7 @@ const TextPreview = ({ text, segment, sendText, currentUser, history }) => {
             <div className='text-preview-container'>
                 <div className='text-preview'>
                     <div>
-                        <label>Event Name</label> {text.name}
+                        <label>Event</label>{text.name}
                     </div>
                     {renderSegment()}
                     {renderSentDate()}
