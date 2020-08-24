@@ -8,13 +8,17 @@ import Button from '../custom-button/custom-button.component';
 import TextFormPreview from '../text-form-preview/text-form-preview.component';
 import SegmentListDropdown from '../segment-list-dropdown/segment-list-dropdown';
 import { sendText } from '../../redux/text/text.actions';
+import { showSuccessMessage } from '../../redux/ui/ui.actions';
 
-const TextPreview = ({ text, segment, sendText, currentUser, history }) => {
+const TextPreview = ({ text, segment, sendText, currentUser, showSuccessMessage, history }) => {
     const [segmentDropdown, showSegmentDropdown] = useState(false);
 
     const handleSubmit = () => {
         sendText(text._id, currentUser._id)
-            .then(() => history.push('/'));
+            .then(() => {
+                history.push('/');
+                showSuccessMessage('Successfully sent!');
+            });
     };
 
     const renderButtons = () => {
@@ -125,7 +129,8 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-    sendText: (textId, userId) => dispatch(sendText(textId, userId))
+    sendText: (textId, userId) => dispatch(sendText(textId, userId)),
+    showSuccessMessage: message => dispatch(showSuccessMessage(message))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TextPreview));

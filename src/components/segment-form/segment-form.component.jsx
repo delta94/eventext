@@ -7,8 +7,9 @@ import './segment-form.styles.scss';
 import Directories from '../directories/directories.component';
 import Button from '../custom-button/custom-button.component';
 import { createSegment, updateSegment } from '../../redux/segment/segment.actions';
+import { showSuccessMessage } from '../../redux/ui/ui.actions';
 
-const SegmentForm = ({ segment, createSegment, updateSegment, currentUser, history }) => {
+const SegmentForm = ({ segment, createSegment, updateSegment, currentUser, showSuccessMessage, history }) => {
     const [name, setName] = useState(segment ? segment.name : '');
     const [people, setPeople] = useState(segment ? segment.directoryIds : []);
 
@@ -22,10 +23,16 @@ const SegmentForm = ({ segment, createSegment, updateSegment, currentUser, histo
             data._id = _id;
     
             updateSegment(data, currentUser._id)
-                .then(() => history.push('/segments'));
+                .then(() => {
+                    history.push('/segments');
+                    showSuccessMessage('Successfully updated!');
+                });
         } else {
             createSegment(data, currentUser._id)
-                .then(() => history.push('/segments'));
+                .then(() => {
+                    history.push('/segments');
+                    showSuccessMessage('Successfully added!');
+                });
         }
     };
 
@@ -61,7 +68,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     createSegment: (segment, userId) => dispatch(createSegment(segment, userId)),
-    updateSegment: (segment, userId) => dispatch(updateSegment(segment, userId))
+    updateSegment: (segment, userId) => dispatch(updateSegment(segment, userId)),
+    showSuccessMessage: message => dispatch(showSuccessMessage(message))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SegmentForm));

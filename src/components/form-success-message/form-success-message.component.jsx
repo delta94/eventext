@@ -14,7 +14,7 @@ const FormSuccessMessage = ({ children, clearSuccessMessage }) => {
 
             setTimeout(() => {
                 setMessageClass('');
-                
+
                 setTimeout(() => {
                     clearSuccessMessage();
                 }, 250);

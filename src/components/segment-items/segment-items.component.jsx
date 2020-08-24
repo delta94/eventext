@@ -6,10 +6,12 @@ import './segment-items.styles.scss';
 
 import Button from '../custom-button/custom-button.component';
 import { deleteSegment } from '../../redux/segment/segment.actions';
+import { showSuccessMessage } from '../../redux/ui/ui.actions';
 
-const SegmentItems = ({ segment, history, deleteSegment, currentUser }) => {
+const SegmentItems = ({ segment, history, deleteSegment, currentUser, showSuccessMessage }) => {
     const removeSegment = () => {
-        deleteSegment(segment._id, currentUser._id);
+        deleteSegment(segment._id, currentUser._id)
+            .then(() => showSuccessMessage('Successfully deleted!'));
     };
 
     return(
@@ -35,7 +37,8 @@ const mapStateToProps = state => ({
 }) 
 
 const mapDispatchToProps = dispatch => ({
-    deleteSegment: (segmentId, userId) => dispatch(deleteSegment(segmentId, userId))
+    deleteSegment: (segmentId, userId) => dispatch(deleteSegment(segmentId, userId)),
+    showSuccessMessage: message => dispatch(showSuccessMessage(message))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SegmentItems));

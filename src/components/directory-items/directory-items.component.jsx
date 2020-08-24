@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import './directory-items.styles.scss';
 
 import { deleteDirectory } from '../../redux/directory/directory.actions';
+import { showSuccessMessage } from '../../redux/ui/ui.actions';
 
-const DirectoryItems = ({ directory, people, setPeople, deleteDirectory, currentUser }) => {
+const DirectoryItems = ({ directory, people, setPeople, deleteDirectory, showSuccessMessage, currentUser }) => {
 
     const handleClick = () => {
         if (clicked()) {
@@ -23,6 +24,8 @@ const DirectoryItems = ({ directory, people, setPeople, deleteDirectory, current
     const handleDelete = () => {
         deleteDirectory(directory._id, currentUser._id)
             .then(() => {
+                showSuccessMessage('Successfully deleted!');
+                
                 if (clicked()) {
                     const newPeople = people.filter(personId => personId !== directory._id);
                     setPeople(newPeople);
@@ -51,7 +54,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    deleteDirectory: (directoryId, userId) => dispatch(deleteDirectory(directoryId, userId))
+    deleteDirectory: (directoryId, userId) => dispatch(deleteDirectory(directoryId, userId)),
+    showSuccessMessage: message => dispatch(showSuccessMessage(message))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DirectoryItems);

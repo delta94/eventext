@@ -4,10 +4,11 @@ import { withRouter } from 'react-router-dom';
 
 import Button from '../custom-button/custom-button.component';
 import { createText, deleteText } from '../../redux/text/text.actions';
+import { showSuccessMessage } from '../../redux/ui/ui.actions';
 
 import './text-items.styles.scss';
 
-export const TextItems = ({ item, segment, createText, deleteText, currentUser, history }) => {
+export const TextItems = ({ item, segment, createText, deleteText, currentUser, showSuccessMessage, history }) => {
     const { _id, name, status } = item;
 
     const textName = (
@@ -31,11 +32,13 @@ export const TextItems = ({ item, segment, createText, deleteText, currentUser, 
     const cloneText = () => {
         const newData = { name: item.name, message: item.message, media: item.media, segmentId: segment._id, status: 'Draft' };
 
-        createText(newData, currentUser._id);
+        createText(newData, currentUser._id)
+            .then(() => showSuccessMessage('Successfully cloned!'));
     };
 
     const removeText = () => {
-        deleteText(item._id, currentUser._id);
+        deleteText(item._id, currentUser._id)
+            .then(() => showSuccessMessage('Successfully deleted!'));
     };
 
     const action = status === 'Sent' 
@@ -64,7 +67,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     createText: (data, userId) => dispatch(createText(data, userId)),
-    deleteText: (textId, userId) => dispatch(deleteText(textId, userId))
+    deleteText: (textId, userId) => dispatch(deleteText(textId, userId)),
+    showSuccessMessage: message => dispatch(showSuccessMessage(message))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TextItems));

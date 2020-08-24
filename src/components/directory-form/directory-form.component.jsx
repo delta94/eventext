@@ -5,8 +5,9 @@ import './directory-form.styles.scss';
 
 import Button from '../custom-button/custom-button.component';
 import { createDirectory } from '../../redux/directory/directory.actions'; 
+import { showSuccessMessage } from '../../redux/ui/ui.actions';
 
-const DirectoryForm = ({ formClass, setFormClass, createDirectory, currentUser }) => {
+const DirectoryForm = ({ formClass, setFormClass, createDirectory, currentUser, showSuccessMessage }) => {
     const [mobile, setMobile] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -20,6 +21,7 @@ const DirectoryForm = ({ formClass, setFormClass, createDirectory, currentUser }
                 setMobile('');
                 setFirstName('');
                 setLastName('');
+                showSuccessMessage('Successfully added!');
             });
     };
 
@@ -75,7 +77,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    createDirectory: (directory, userId) => dispatch(createDirectory(directory, userId))
+    createDirectory: (directory, userId) => dispatch(createDirectory(directory, userId)),
+    showSuccessMessage: message => dispatch(showSuccessMessage(message))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DirectoryForm);
