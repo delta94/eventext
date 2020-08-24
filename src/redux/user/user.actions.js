@@ -16,7 +16,6 @@ const receiveAllUserData = data => ({
 export const createUser = user => dispatch => (
     userUtil.createUser(user)
         .then(user => {
-            console.log('user', user);
             const { token } = user.data;
             localStorage.setItem('jwtToken', token);
             sessionUtil.setAuthToken(token);

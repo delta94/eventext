@@ -6,19 +6,30 @@ import './reset.css';
 
 import Dashboard from './pages/dashboard/dashboard.component';
 import Splash from './pages/splash/splash.component';
+import FormSuccessMessage from './components/form-success-message/form-success-message.component';
 import { fetchAllData } from './redux/user/user.actions';
 
-const App = ({ loggedIn, currentUser, fetchAllData }) => {
+const App = ({ loggedIn, currentUser, fetchAllData, successMessage }) => {
   useEffect(() => {
     if (loggedIn) fetchAllData(currentUser._id);
   }, [currentUser]);
 
-  return loggedIn ? <Dashboard /> : <Splash />;
+  return (
+    <div>
+      {successMessage
+        ? <FormSuccessMessage>{successMessage}</FormSuccessMessage>
+        : null}
+      {loggedIn 
+        ? <Dashboard /> 
+        : <Splash />}
+    </div>
+  )
 };
 
 const mapStateToProps = state => ({
   loggedIn: state.session.isAuthenticated,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  successMessage: state.ui.successMessage
 });
 
 const mapDispatchToProps = dispatch => ({

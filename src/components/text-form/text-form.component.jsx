@@ -6,12 +6,13 @@ import './text-form.styles.scss';
 
 import TextFormPreview from '../text-form-preview/text-form-preview.component';
 import { createText, updateText } from '../../redux/text/text.actions';
+import { showSuccessMessage } from '../../redux/ui/ui.actions';
 import Button from '../custom-button/custom-button.component';
 import Select from '../custom-select/custom-select.component';
 import WithSpinner from '../with-spinner/with-spinner.component';
 import GiphyModal from '../giphy-modal/giphy-modal.component';
 
-const TextForm = ({ text, segment, segments, createText, updateText, currentUser, history }) => {
+const TextForm = ({ text, segment, segments, createText, updateText, currentUser, showSuccessMessage, history }) => {
   
     const [name, setName] = useState('');
     const [segmentName, setSegmentName] = useState(Object.keys(segments)[0]);
@@ -42,10 +43,16 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
         if (text) {
             data._id = text._id;
             updateText(data, userId)
-                .then(response => history.push(`/preview/${response.text.data._id}`));
+                .then(response => {
+                    history.push(`/preview/${response.text.data._id}`);
+                    showSuccessMessage('Successfully updated!');
+                });
         } else {
             createText(data, userId)
-                .then(response => history.push(`/preview/${response.text.data._id}`));
+                .then(response => {
+                    history.push(`/preview/${response.text.data._id}`);
+                    showSuccessMessage('Successfully added!');
+                });
         }
     };
 
@@ -175,7 +182,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     createText: (text, userId) => dispatch(createText(text, userId)),
-    updateText: (id, data) => dispatch(updateText(id, data))
+    updateText: (id, data) => dispatch(updateText(id, data)),
+    showSuccessMessage: message => dispatch(showSuccessMessage(message))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TextForm));
