@@ -4,8 +4,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
-require('dotenv').config();
-
 const app = express();
 const port = process.env.PORT || 5000;
 
