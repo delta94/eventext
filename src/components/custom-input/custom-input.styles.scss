@@ -25,12 +25,16 @@
 
     input {
         background-color: transparent;
-        width: 100%;
+        width: 97%;
         border: 0;
         border-bottom: 1px solid #ccc;
-        padding: 10px 5px;
+        padding: 10px 0;
         margin-bottom: 15px;
         box-sizing: border-box;
+
+        &:focus {
+            border-bottom: 1px solid #0095f6;
+        }
 
         &:focus ~ label {
             @include shrinkLabel();
