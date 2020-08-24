@@ -3,7 +3,7 @@ const validText = input => typeof input === 'string';
 
 module.exports = function validateRegisterInput(data) {
     const errors = {};
-    const { name, email, mobile, password, confirmPassword } = data;
+    const { name, email, password, confirmPassword } = data;
 
     if (!validText(name) || name.split(' ').length <= 1) {
         errors.name = 'Full name is required';
@@ -11,10 +11,6 @@ module.exports = function validateRegisterInput(data) {
 
     if (!validator.isEmail(email)) {
         errors.email = 'Email is invalid';
-    }
-
-    if (!validator.isMobilePhone(mobile)) {
-        errors.mobile = 'Mobile phone number is invalid';
     }
 
     if (!validator.isLength(password, { min: 6, max: 20 })) {

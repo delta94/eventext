@@ -34,8 +34,6 @@ const SignUpForm = ({ setPage, createUser, errors, clearErrors }) => {
                 {errors.name ? <div className='error-message'><span>{errors.name}</span></div> : null}
                 <Input type='text' handleChange={setEmail} value={email}>Email</Input>
                 {errors.email ? <div className='error-message'><span>{errors.email}</span></div> : null}
-                <Input type='tel' handleChange={setMobile} value={mobile}>Mobile Number</Input>
-                {errors.mobile ? <div className='error-message'><span>{errors.mobile}</span></div> : null}
                 <Input type='password' handleChange={setPassword} value={password}>Password</Input>
                 {errors.password ? <div className='error-message'><span>{errors.password}</span></div> : null}
                 <Input type='password' handleChange={setConfirmPassword} value={confirmPassword}>Confirm Password</Input>

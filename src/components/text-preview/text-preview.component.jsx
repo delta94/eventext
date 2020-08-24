@@ -80,7 +80,7 @@ const TextPreview = ({ text, segment, sendText, currentUser, showSuccessMessage,
         if (text.status === 'Sent') {
             return (
                 <div>
-                    <label>Date Sent</label> {date}
+                    <label>Date Sent</label>{date}
                 </div>
             )
         } else {

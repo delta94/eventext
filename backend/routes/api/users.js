@@ -22,8 +22,8 @@ router.route('/register').post((req, res) => {
     const { errors, valid } = validateRegisterInput(req.body);
     if (!valid) return res.status(400).json(errors);
 
-    const { name, email, mobile, password } = req.body;
-    const newUser = new User({ name, email, mobile, password });
+    const { name, email, password } = req.body;
+    const newUser = new User({ name, email, password });
 
     bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newUser.password, salt, (err, hash) => {
