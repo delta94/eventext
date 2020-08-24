@@ -20,7 +20,6 @@ router.route('/:id').get((req, res) => {
 
 router.route('/register').post((req, res) => {
     const { errors, valid } = validateRegisterInput(req.body);
-    console.log(errors);
     if (!valid) return res.status(400).json(errors);
 
     const { name, email, mobile, password } = req.body;
