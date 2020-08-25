@@ -1,0 +1,50 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+
+a {
+	text-decoration: none;
+	color: #212529;
+}
+
+button {
+	cursor: pointer;
+	border: none;
+}
+
+button:active {
+	transform: scale(.98);
+}
+
+textarea {
+	resize: none;
+}
+
+input, button, textarea, label {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	outline: none;
+}
+
+.spinner {
+	margin: auto;
+	margin-top: 20%;
+	border: 3px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 3px solid #3498db;
+	width: 40px;
+	height: 40px;
+	-webkit-animation: spin 1s linear infinite; 
+	animation: spin 1s linear infinite;
+
+	@-webkit-keyframes spin {
+		0% { -webkit-transform: rotate(0deg); }
+		100% { -webkit-transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+}

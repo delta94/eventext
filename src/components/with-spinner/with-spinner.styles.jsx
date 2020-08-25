@@ -6,7 +6,7 @@ export const Spinner = styled.div`
     border-top: 3px solid #3498db;
     width: 12px;
     height: 12px;
-    -webkit-animation: spin 1s linear infinite; /* Safari */
+    -webkit-animation: spin 1s linear infinite;
     animation: spin 1s linear infinite;
 
     @-webkit-keyframes spin {

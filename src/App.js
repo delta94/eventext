@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import './App.css';
+import './App.scss';
 import './reset.css';
 
 import Dashboard from './pages/dashboard/dashboard.component';
@@ -10,8 +10,13 @@ import FormSuccessMessage from './components/form-success-message/form-success-m
 import { fetchAllData } from './redux/user/user.actions';
 
 const App = ({ loggedIn, currentUser, fetchAllData, successMessage }) => {
+  const [pageLoaded, setPageLoaded] = useState(false);
+
   useEffect(() => {
-    if (loggedIn) fetchAllData(currentUser._id);
+    if (loggedIn) {
+      fetchAllData(currentUser._id)
+        .then(() => setPageLoaded(true));
+    }
   }, [currentUser]);
 
   return (
@@ -20,7 +25,7 @@ const App = ({ loggedIn, currentUser, fetchAllData, successMessage }) => {
         ? <FormSuccessMessage>{successMessage}</FormSuccessMessage>
         : null}
       {loggedIn 
-        ? <Dashboard /> 
+        ? pageLoaded ? <Dashboard /> : <div className='spinner' />
         : <Splash />}
     </div>
   )
