@@ -40,12 +40,12 @@ const SegmentForm = ({ segment, createSegment, updateSegment, currentUser, showS
         <div className='segment-form'>
             <form>
                 <div className='segment-name'>
-                    <label>Segment Name</label>
+                    <label>Group Name</label>
                     <input
                         type='text'
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        placeholder='Segment Name'
+                        placeholder='Group Name'
                     />
                 </div>
                 <div className='directory-counter'>

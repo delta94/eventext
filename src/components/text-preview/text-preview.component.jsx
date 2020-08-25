@@ -45,7 +45,7 @@ const TextPreview = ({ text, segment, sendText, currentUser, showSuccessMessage,
         if (segment) {
             return (
                 <div className='segment-count'>
-                    <label>Segment</label> {segment.name}
+                    <label>Group</label> {segment.name}
                     <div className='count'>
                         (<span 
                             onMouseEnter={() => showSegmentDropdown(true)}

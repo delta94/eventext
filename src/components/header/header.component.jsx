@@ -19,7 +19,7 @@ const Header = ({ history }) => {
 
     const Title = () => (
         history.location.pathname.split('segments').length > 1
-        ? <h1 onClick={() => history.push('/segments')}>Segments</h1>
+        ? <h1 onClick={() => history.push('/segments')}>Group</h1>
         : <h1 onClick={() => history.push('/')}>Text Messages</h1>
     )
 
@@ -31,7 +31,7 @@ const Header = ({ history }) => {
             const page = history.location.pathname.split('/');
 
             if (page[1] === 'segments') {
-                title = page[2] === 'add' ? <h1>Create Segment</h1> : <h1>Edit Segment</h1>;
+                title = page[2] === 'add' ? <h1>Create Group</h1> : <h1>Edit Group</h1>;
             } else {
                 if (page[1] === 'add') {
                     title = <h1>Create Message</h1>;

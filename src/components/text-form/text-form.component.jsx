@@ -105,7 +105,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                         />
                     </div>
                     <div className='segment'>
-                        <label>Segment</label>
+                        <label>Group</label>
                         {Object.keys(segments).length > 0
                             ? <Select
                                 options={Object.keys(segments)}
@@ -117,7 +117,7 @@ const TextForm = ({ text, segment, segments, createText, updateText, currentUser
                             : <Button 
                                 link='segments/add' 
                                 color='white-blue'>
-                                Create Segment
+                                Create a Group
                             </Button>}
                     </div>
                     <div className='message'>

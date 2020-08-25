@@ -30,7 +30,7 @@ const SideBar = ({ history, currentUser }) => {
             </div>
             <div className='menu' onClick={() => history.push('/segments')}>
                 <i className='fas fa-users'></i>
-                <span className='title'>Segments</span>
+                <span className='title'>Group</span>
             </div>
             <hr />
             <a href='https://github.com/juneseong' target='_blank' rel='noopener noreferrer'>

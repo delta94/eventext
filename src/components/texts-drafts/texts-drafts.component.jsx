@@ -6,9 +6,11 @@ import './texts-drafts.styles.scss';
 import TextItems from '../text-items/text-items.component';
 
 const TextsDrafts = ({ textsDrafts }) => {
-    const texts = textsDrafts.reverse().map(text => {
-        return <TextItems key={text._id} item={text} />
-    });
+    const texts = textsDrafts.reverse().map(text => <TextItems key={text._id} item={text} />);
+
+    const emptyTexts = () => {
+        if (texts.length === 0) return <div className='no-texts'>There are no messages to display</div>;
+    };
 
     return (
         <div className='texts-drafts'>
@@ -25,6 +27,7 @@ const TextsDrafts = ({ textsDrafts }) => {
                     {texts}
                 </tbody>
             </table>
+            {emptyTexts()}
         </div>
     )
 }
