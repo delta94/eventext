@@ -7,11 +7,13 @@ import './text-preview.styles.scss';
 import Button from '../custom-button/custom-button.component';
 import TextFormPreview from '../text-form-preview/text-form-preview.component';
 import SegmentListDropdown from '../segment-list-dropdown/segment-list-dropdown';
+import WithSpinner from '../with-spinner/with-spinner.component';
 import { sendText } from '../../redux/text/text.actions';
 import { showSuccessMessage } from '../../redux/ui/ui.actions';
 
 const TextPreview = ({ text, segment, sendText, currentUser, showSuccessMessage, history }) => {
     const [segmentDropdown, showSegmentDropdown] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const handleSubmit = () => {
         sendText(text._id, currentUser._id)
@@ -64,7 +66,7 @@ const TextPreview = ({ text, segment, sendText, currentUser, showSuccessMessage,
 
     const renderMedia = () => {
         if (text.media) {
-            return <div><img src={text.media} alt='media' /></div>
+            return <WithSpinner media={text.media} loading={loading} setLoading={setLoading} />
         } else {
             return null;
         }
