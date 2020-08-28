@@ -3,6 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -13,7 +15,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.json());
 
-const uri = keys.ATLAS_URI;
+const uri = keys.mongoURI;
 mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
 const connection = mongoose.connection;
 connection.once('open', () => {

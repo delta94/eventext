@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server",
-    "frontend": "cd ../ && npm start",
+    "frontend": "cd .. && npm start",
     "start": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "keywords": [],

@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '../../../.env') });
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.TWILIO_AUTH_TOKEN;
